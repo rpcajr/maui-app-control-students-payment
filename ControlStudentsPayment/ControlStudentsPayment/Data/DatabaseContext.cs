@@ -1,5 +1,4 @@
-﻿using AndroidX.Emoji2.Text.FlatBuffer;
-using ControlStudentsPayment.Utils;
+﻿using ControlStudentsPayment.Utils;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -15,8 +14,7 @@ namespace ControlStudentsPayment.Data
         private SQLiteAsyncConnection _connection;
 
         private SQLiteAsyncConnection Database =>
-            (_connection ??= new SQLiteAsyncConnection(DbConstants.DatabasePath,
-                SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.SharedCache));
+            (_connection ??= new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags));
 
         private async Task CreateTableIfNotExists<TTable>() where TTable : class, new()
         {
