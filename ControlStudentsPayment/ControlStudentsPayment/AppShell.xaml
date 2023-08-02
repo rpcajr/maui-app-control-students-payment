@@ -3,12 +3,32 @@
     x:Class="ControlStudentsPayment.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ControlStudentsPayment"
-    Shell.FlyoutBehavior="Flyout">
+    xmlns:local="clr-namespace:ControlStudentsPayment.Views"
+    xmlns:fontAwesome="clr-namespace:FontAwesome">
+    
+    <FlyoutItem>
+        <Tab Title="Home">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Home}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomeView}" Route="HomeView" />
+        </Tab>
+        <Tab Title="Cash">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.DollarSign}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:CashView}" Route="CashView" />
+        </Tab>
+        <Tab Title="Students">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Users}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:SearchStudentsView}" Route="SearchStudentsView" />
+        </Tab>
+    </FlyoutItem>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
 </Shell>
