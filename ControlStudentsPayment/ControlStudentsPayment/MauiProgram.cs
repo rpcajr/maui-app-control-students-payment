@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ControlStudentsPayment.Data;
+using Microsoft.Extensions.Logging;
 
 namespace ControlStudentsPayment;
 
@@ -19,6 +20,9 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+		builder.Services.AddSingleton<DatabaseContext>();
+        builder.Services.AddSingleton<MainPage>();
+
+        return builder.Build();
 	}
 }
