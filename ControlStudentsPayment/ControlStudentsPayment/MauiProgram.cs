@@ -1,6 +1,10 @@
-﻿using ControlStudentsPayment.Data;
+﻿using CommunityToolkit.Maui;
+using ControlStudentsPayment.Data;
+using ControlStudentsPayment.Services;
 using ControlStudentsPayment.ViewModels;
+using ControlStudentsPayment.ViewModels.Students;
 using ControlStudentsPayment.Views;
+using ControlStudentsPayment.Views.Students;
 using Microsoft.Extensions.Logging;
 
 namespace ControlStudentsPayment;
@@ -12,7 +16,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -26,14 +31,17 @@ public static class MauiProgram
 #endif
 
 		builder.Services.AddSingleton<DatabaseContext>();
+		builder.Services.AddSingleton<StudentService>();
 
         builder.Services.AddTransient<HomeViewModel>();
         builder.Services.AddTransient<CashViewModel>();
         builder.Services.AddTransient<SearchStudentsViewModel>();
+        builder.Services.AddTransient<AddStudentsViewModel>();
 
         builder.Services.AddTransient<HomeView>();
 		builder.Services.AddTransient<CashView>();
 		builder.Services.AddTransient<SearchStudentsView>();
+		builder.Services.AddTransient<AddStudentsView>();
 
         return builder.Build();
 	}

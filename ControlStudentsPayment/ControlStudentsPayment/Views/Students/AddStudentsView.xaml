@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ControlStudentsPayment.Views.Students.AddStudentsView"
+             xmlns:viewmodel="clr-namespace:ControlStudentsPayment.ViewModels.Students"
+             x:DataType="viewmodel:AddStudentsViewModel"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Add Student">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+
+            <Label Text="Name:"/>
+            <Entry Text="{Binding Name}" />
+
+            <Label Text="CPF:" Margin="0,5,0,0"/>
+            <Entry Text="{Binding Cpf}" Keyboard="Numeric" TextChanged="Entry_TextChanged">
+                <Entry.Behaviors>
+                    <toolkit:MaskedBehavior Mask="XXX.XXX.XXX-XX" UnmaskedCharacter="X"/>
+                </Entry.Behaviors>
+            </Entry>
+
+            <Grid ColumnDefinitions="*,*">
+                <StackLayout>
+                    <Label Text="Expiration Day:" Margin="0,5,0,0"/>
+                    <Picker Title="Select a Day" SelectedItem="{Binding DayExpiration}" ItemsSource="{Binding DayList}" ItemDisplayBinding="{Binding}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <Label Text="Value:" Margin="0,5,0,0"/>
+                    <Entry Text="{Binding Value}" Margin="0,4,0,0" Keyboard="Numeric" MaxLength="9" TextChanged="Entry_TextChanged"/>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Spacing="10">
+                <Button
+                    Padding="20,0"
+                    HorizontalOptions="Center"
+                    Command="{Binding SaveCommand}"
+                    Text="Save" 
+                    MinimumWidthRequest="100"/>
+
+                <Button
+                    Padding="20,0"
+                    HorizontalOptions="Center"
+                    Command="{Binding CancelCommand}"
+                    Text="Cancel" 
+                    Style="{StaticResource CancelButton}"
+                    MinimumWidthRequest="100"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ControlStudentsPayment.Views"
     xmlns:fontAwesome="clr-namespace:FontAwesome">
-    
+
     <FlyoutItem>
         <Tab Title="Home">
             <Tab.Icon>
@@ -29,6 +29,5 @@
             <ShellContent ContentTemplate="{DataTemplate local:SearchStudentsView}" Route="SearchStudentsView" />
         </Tab>
     </FlyoutItem>
-
 
 </Shell>
