@@ -1,4 +1,4 @@
-using ControlStudentsPayment.ViewModels;
+using ControlStudentsPayment.ViewModels.Students;
 
 namespace ControlStudentsPayment.Views;
 
